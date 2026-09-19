@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  
+  --border-light: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+  
+  --brand-blue: #2563eb;
+  --brand-blue-hover: #1d4ed8;
+  --brand-blue-soft: #eff6ff;
+  
+  --emerald-main: #10b981;
+  --emerald-soft: #ecfdf5;
+  
+  --amber-main: #f59e0b;
+  --amber-soft: #fffbeb;
+  
+  --rose-main: #ef4444;
+  --rose-soft: #fef2f2;
+}
+
+/* Dark Theme Variables */
+html.dark {
+  --bg-app: #292929;
+  --bg-surface: #202020;
+  --bg-subtle: #333333;
+  --border-light: #3e3e3e;
+  --border-subtle: #333333;
+  --text-main: #f8fafc;
+  --text-muted: #a3a3a3;
+  --text-faint: #737373;
+  background-color: #292929;
+  color: #f8fafc;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #444444;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Base Light Theme Setup */
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.5;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Webkit Drag Region */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag-region,
+.no-drag-region *,
+button,
+input,
+select,
+textarea,
+a,
+[role="button"] {
+  -webkit-app-region: no-drag !important;
+}
+
+/* Polished Scrollbars for Light Theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Inputs & Form Elements */
+input, textarea, select {
+  color: var(--text-main);
+  font-family: inherit;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-faint);
+}
+
+input:focus, textarea:focus, select:focus, button:focus {
+  outline: none;
+}
+
+/* Smooth micro animations */
+.fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pulsing-dot {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+

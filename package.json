@@ -1,0 +1,67 @@
+{
+  "name": "my-tasker-dev",
+  "version": "1.0.0",
+  "description": "A fast, minimal, developer-focused desktop checklist app",
+  "author": "Tasker Team",
+  "main": "dist/main/index.cjs",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/dev.cjs",
+    "dev:main": "esbuild src/main/index.ts --bundle --platform=node --external:electron --external:electron-store --outfile=dist/main/index.cjs --sourcemap",
+    "dev:preload": "esbuild src/main/preload.ts --bundle --platform=node --external:electron --outfile=dist/main/preload.cjs --sourcemap",
+    "dev:renderer": "vite",
+    "build:main": "esbuild src/main/index.ts --bundle --platform=node --minify --external:electron --external:electron-store --outfile=dist/main/index.cjs",
+    "build:preload": "esbuild src/main/preload.ts --bundle --platform=node --minify --external:electron --outfile=dist/main/preload.cjs",
+    "build:renderer": "vite build",
+    "build": "npm run build:main && npm run build:preload && npm run build:renderer",
+    "dev": "node scripts/dev.cjs",
+    "prepackage": "node scripts/kill-running.cjs",
+    "package": "npm run build && electron-builder"
+  },
+
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "marked": "^9.1.0",
+    "prismjs": "^1.29.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "@tsconfig/svelte": "^5.0.0",
+    "@types/node": "^20.5.0",
+    "@types/prismjs": "^1.26.0",
+    "autoprefixer": "^10.4.15",
+    "concurrently": "^8.2.0",
+    "electron": "^25.3.0",
+    "electron-builder": "^24.6.3",
+    "esbuild": "^0.19.2",
+    "postcss": "^8.4.28",
+    "svelte": "^4.2.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9"
+  },
+  "build": {
+    "appId": "com.developer.mytaskerdev",
+    "productName": "My Tasker Dev",
+    "icon": "public/appicon.png",
+    "directories": {
+      "output": "build-release"
+    },
+    "files": [
+      "dist/**/*",
+      "public/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "public/appicon.png",
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "createDesktopShortcut": true
+    }
+  }
+}

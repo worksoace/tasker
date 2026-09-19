@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build and packaging output
+dist/
+build-release/
+release/
+
+# Temporary files & Vite cache
+*.timestamp-*.mjs
+vite.config.ts.timestamp*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
